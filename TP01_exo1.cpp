@@ -17,7 +17,7 @@ void addedge(vector<int> adj[], int src, int dest)
 // when it finds the shortest path, it returns true else it returns false 
 // the function takes as arguments : the vector of adjacency, source, destination, number of vertices, 
 //the array of predeccessors and array of distances 
-/*bool check(vector<int> adj, int src, int dest, int v, int pred[],int dist[])
+bool check(vector<int> adj[], int src, int dest, int v, int pred[],int dist[])
 {
     // we define a queue that will store the connected vertices to each vertex i 
     list<int> queue;
@@ -33,7 +33,6 @@ void addedge(vector<int> adj[], int src, int dest)
     
     visited[src] = true;
     dist[src] = 0;
-    pred[src] = 0;
     queue.push_back(src);
     
     while(queue.empty() == false)
@@ -59,20 +58,19 @@ void addedge(vector<int> adj[], int src, int dest)
     }
     
     return false;
-}*/
+}
 
 
 
 
 
-
-void printshortestpath(vector<int> adj, int src, int dest, int v)
+void printshortestpath(vector<int> adj[], int src, int dest, int v)
 {
     int pred[v];
     int dist[v];
     vector<int> path;
     
-    if(BFS(&adj,src,dest,v,pred,dist)== false){
+    if(check(adj,src,dest,v,pred,dist)== false){
         cout << "dest and source given are not connected!";
         return;}
     else 
@@ -94,11 +92,12 @@ void printshortestpath(vector<int> adj, int src, int dest, int v)
 
 int main()
 {
-
+    
     int v = 8;
  
- 
+  
     vector<int> adj[v];
+ 
  
     addedge(adj, 0, 1);
     addedge(adj, 0, 3);
